@@ -41,13 +41,11 @@ class Restaurant(models.Model):
     phone_number = models.CharField(
         verbose_name='(Primary) Phone Number',
         max_length=20, 
-        default='(xxx) xxx-xxxx'
     )
 
     description = models.CharField(
         verbose_name='Tell us abbout your restaurant!',
         max_length=300, 
-        default='No description added'
     )
 
     #User that owns the restaurant

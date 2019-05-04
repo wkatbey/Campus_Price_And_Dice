@@ -177,34 +177,19 @@ def load_item(request, item_id, restaurant_id):
     return restaurant_detail(request, restaurant.id, context=context)
 
 
-def add_restaurant_page(request, context={}):
+def save_restaurant(request, does_restaurant_exist):
     context = {}
+    
+    context['does_restaurant_exist'] = bool(does_restaurant_exist)
 
     if request.method == 'POST':
         preliminary_info_form = SaveRestaurantForm(request)
-
     else:
         preliminary_info_form = SaveRestaurantForm()
         
         context['preliminary_info_form'] = preliminary_info_form
 
-
-
-'''def add_favorite_restaurant(request, restaurant_id):
-    try:
-        restaurant = Restaurant.objects.get(pk=restaurant_id)
-
-        #'root' to be replaced by session username
-        current_user = User.objects.get(username='root') 
-        current_user.add_favorite_restaurant(restaurant)
-        current_user.save()
-        print("favorited")
-
-    except Restaurant.DoesNotExist:
-        raise Http404("Restaurant does not exist")
-
-    return render(request, 'campus/restaurant-list.html', {})'''
-
+    return render(request, 'campus/add-restaurant.html', context)
 
 #4/2 Derrick
 def user_profile(request):
