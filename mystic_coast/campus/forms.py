@@ -11,7 +11,7 @@ class SaveRestaurantForm(forms.ModelForm):
             'name': forms.TextInput(attrs = {
                 'class': 'form-control'
             }),
-            'location': forms.EmailInput(attrs = {
+            'location': forms.TextInput(attrs = {
                 'class': 'form-control'
             }),
             'phone_number': forms.TextInput(attrs = {
@@ -22,6 +22,13 @@ class SaveRestaurantForm(forms.ModelForm):
             })
         }
 
+    def save(self, maintainer, commit=True):
+        restaurant = super().save(commit=False)
+        restaurant.set_maintainer(maintainer)
 
+        if commit:
+            restaurant.save()
+
+        return restaurant
 
     

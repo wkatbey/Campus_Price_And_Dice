@@ -21,7 +21,11 @@
 {% block body %}
 <div id="app">
     {% autoescape on %}
-    <form method="POST" action="{% url 'campus:add_restaurant_action' %}" id="restaurant_form">
+    {% if does_restaurant_exist %}
+    <form method="POST" action="{% url 'campus:save_restaurant' %}" id="restaurant_form">
+    {% else %}
+    <form method="POST" action="{% url 'campus:add_restaurant' %}" id="restaurant_form">
+    {% endif %}
         <div class="container content-top">
             {% csrf_token %}
             <div class="row">
@@ -144,7 +148,7 @@
             </div> 
             <div class="row">
                 <div class="col-lg-12 text-right">
-                    {% if is_data_preloaded %}
+                    {% if does_restaurant_exist %}
                         <button type="submit" class="btn btn-link">Save</button>
                     {% else %}
                         <button type="submit" class="btn btn-link">Create</button>

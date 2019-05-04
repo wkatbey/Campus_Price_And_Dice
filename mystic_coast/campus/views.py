@@ -31,14 +31,6 @@ def delete_item(request, restaurant_id, item_id):
 
     return HttpResponseRedirect(reverse('campus:restaurant_detail', kwargs={'restaurant_id': restaurant_id}))
 
-
-def average_restaurant_list(request):
-    #average_restaurant_list = Restaurant.objects.all()
-    #context = {'average_restaurant_list': average_restaurant_list}
-    print("test")
-    #return render(request, 'campus/restaurant-list.html', context)
-
-
 def restaurant_detail(request, restaurant_id, context={}):
     
     try: 
@@ -49,53 +41,6 @@ def restaurant_detail(request, restaurant_id, context={}):
     context['restaurant'] = restaurant
     
     return render(request, 'campus/restaurant-detail.html', context)
-
-'''
-    Method to add a restaurant to the database. Takes in a 
-    JSON-formatted string, parses it, and stores its individual
-    attributes into a restaruant and saves it
-'''
-def add_restaurant_action(request, context = {}):
-    context = {}
-
-    if request.method == 'POST':
-        preliminary_info_form = SaveRestaurantForm(request)
-
-    else:
-        preliminary_info_form = SaveRestaurantForm()
-        
-        context['preliminary_info_form'] = preliminary_info_form
-
-        return render(request, 'campus/add-restaurant.html', context)
-  
-
-def edit_restaurant(request, restaurant_id):
-    context = {}
-
-    try:
-        restaurant = Restaurant.objects.get(pk=restaurant_id)
-
-        context['name'] = restaurant.name
-        context['location'] = restaurant.location
-        context['phone_number'] = restaurant.phone_number
-        context['description'] = restaurant.description
-       
-        context['sunday'] = restaurant.sunday
-        context['monday'] = restaurant.monday
-        context['tuesday'] = restaurant.tuesday
-        context['wednesday'] = restaurant.wednesday
-        context['thursday'] = restaurant.thursday
-        context['friday'] = restaurant.friday
-        context['saturday'] = restaurant.saturday
-
-        context['is_data_preloaded'] = True
-        context['restaurant_id'] = restaurant.id
-
-        return render(request, 'campus/add-restaurant.html', context)   
-
-    except Restaurant.DoesNotExist:
-        restaurant = None
-        return restaurant_list(request)
 
 
 def add_item(request):
@@ -177,19 +122,47 @@ def load_item(request, item_id, restaurant_id):
     return restaurant_detail(request, restaurant.id, context=context)
 
 
-def save_restaurant(request, does_restaurant_exist):
+def add_restaurant(request):
     context = {}
     
-    context['does_restaurant_exist'] = bool(does_restaurant_exist)
+    context['does_restaurant_exist'] = False
+    
 
     if request.method == 'POST':
-        preliminary_info_form = SaveRestaurantForm(request)
+
+        maintainer = request.user
+
+        preliminary_info_form = SaveRestaurantForm(request.POST)
+        preliminary_info_form.save(maintainer)
+
     else:
         preliminary_info_form = SaveRestaurantForm()
         
         context['preliminary_info_form'] = preliminary_info_form
 
     return render(request, 'campus/add-restaurant.html', context)
+
+def save_restaurant(request):
+    context = {}
+    
+    context['does_restaurant_exist'] = True
+
+
+    if request.method == 'POST':
+        maintainer = request.user
+        restaurant_id = request.POST['restaurant_id']
+        restaurant = Restaurant.objects.get(pk=restaurant_id)
+
+        preliminary_info_form = SaveRestaurantForm(request.POST, instance=restaurant)
+        preliminary_info_form.save(maintainer)
+    else:
+        preliminary_info_form = SaveRestaurantForm()
+        
+        context['preliminary_info_form'] = preliminary_info_form
+
+    return render(request, 'campus/add-restaurant.html', context)
+
+
 
 #4/2 Derrick
 def user_profile(request):

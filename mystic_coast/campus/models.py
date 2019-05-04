@@ -58,6 +58,9 @@ class Restaurant(models.Model):
     #initial null list of item_list 
     item_list = models.ManyToManyField(Item)
 
+    def set_maintainer(self, maintainer):
+        self.maintainer = maintainer
+
     #returns the average price of an item at a restaruant 
     def get_average_price(self):
         #creates iterable list of item_list
