@@ -5,7 +5,7 @@ from django.urls import reverse
 from .models import Restaurant, Item, User
 from .verification import verify_restaurant, verify_item
 from .verification import save_restaurant_log
-from campus.forms import SaveRestaurantForm
+from campus.forms import SaveRestaurantForm, SaveBusinessHoursForm
 import random
 import json
 
@@ -137,8 +137,17 @@ def add_restaurant(request):
 
     else:
         preliminary_info_form = SaveRestaurantForm()
-        
+       
+        sunday_hours = SaveBusinessHoursForm()
+        monday_hours = SaveBusinessHoursForm()
+        tuesday_hours = SaveBusinessHoursForm()
+        wednesday_hours = SaveBusinessHoursForm()
+        thursday_hours = SaveBusinessHoursForm()
+        friday_hours = SaveBusinessHoursForm()
+        saturday_hours = SaveBusinessHoursForm()
+
         context['preliminary_info_form'] = preliminary_info_form
+
 
     return render(request, 'campus/add-restaurant.html', context)
 

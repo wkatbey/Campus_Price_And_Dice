@@ -78,60 +78,26 @@
             <div class="row pb-2">
                 <div class="col-lg-12">
                     <p class="text-center subheading">Hours of Operation</p>
-                    <p class="lead text-muted text-center">Format: 8:00AM - 8:00PM</p>
                 </div>
             </div>
+            <br>
             <div class="row pb-2">
-                <div class="col-lg-6">
-                    <label for='sunday'>Sunday</label>
-                    <input type='text' class="form-control" 
-                        name='sunday' id='sunday'
-                        value="{{sunday}}">
+                <div class="col-lg-2">
+                    </strong>{{ sunday_hours.from.label_tag}}</strong>: From
+                    {{ sunday_hours.from }}
                 </div>
-                <div class="col-lg-6">
-                    <label for="monday">Monday</label>
-                    <input type="text" class="form-control" 
-                        name="monday" id="monday"
-                        value="{{monday}}">
+                <div class="col-lg-2">
+                    To
+                    {{ sunday_hours.from }}
                 </div>
-            </div>
-            <div class="row pb-2">
-                <div class="col-lg-6">
-                    <label for='tuesday'>Tuesday</label>
-                    <input type='text' class="form-control" 
-                        name='tuesday' id='tuesday'
-                        value="{{tuesday}}">
+
+                <div class="col-lg-2 offset-lg-2">
+                    </strong>{{ monday_hours.from.label_tag}}</strong>: From
+                    {{ monday_hours.from }}
                 </div>
-                <div class="col-lg-6">
-                    <label for="wednesday">Wednesday</label>
-                    <input type="text" class="form-control" 
-                        name="wednesday" id="wednesday"
-                        value="{{wednesday}}">
-                </div>
-            </div>
-            <div class="row pb-2">
-                <div class="col-lg-6">
-                    <label for='thursday'>Thursday</label>
-                    <input type='text' 
-                        class="form-control" 
-                        name='thursday' id='thursday'
-                        value="{{thursday}}">
-                </div>
-                <div class="col-lg-6">
-                    <label for="friday">Friday</label>
-                    <input type="text" 
-                        class="form-control" 
-                        name="friday" id="friday"
-                        value="{{friday}}">
-                </div>
-            </div>
-            <div class="row pb-2">
-                <div class="col-lg-6">
-                    <label for='saturday'>Saturday</label>
-                    <input type='text' 
-                        class="form-control" 
-                        name='saturday' id='saturday'
-                        value="{{saturday}}">
+                 <div class="col-lg-2">
+                    To
+                    {{ monday_hours.to }}
                 </div>
             </div>
             <br>

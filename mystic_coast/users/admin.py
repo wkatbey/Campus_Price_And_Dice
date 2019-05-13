@@ -14,6 +14,7 @@ class UserCreationForm(forms.ModelForm):
 
     first_password = forms.CharField(label='Password', widget=forms.PasswordInput)
     conf_password = forms.CharField(label='Confirm Your Password', widget=forms.PasswordInput)
+    
     is_maintainer_chkbox = forms.BooleanField(
         label='Do you own/manage a restaurant?', 
         widget=forms.CheckboxInput,
@@ -109,42 +110,6 @@ class UserChangeForm(forms.ModelForm):
             user.save()
 
         return user
-
-    
-'''
-class UserAdmin(BaseUserAdmin):
-    # The forms to add and change user instances
-    form = UserChangeForm
-    add_form = UserCreationForm
-
-    # The fields to be used in displaying the User model.
-    # These override the definitions on the base UserAdmin
-    # that reference specific fields on auth.User.
-    list_display = ('email', 'date_of_birth', 'is_maintainer')
-    fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('date_of_birth',)}),
-        ('Permissions', {'fields': ('is_maintainer',)}),
-    )
-    # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
-    # overrides get_fieldsets to use this attribute when creating a user.
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'date_of_birth', 'first_password', 'conf_password')}
-        ),
-    )
-    search_fields = ('email',)
-    ordering = ('email',)
-    filter_horizontal = ()
-
-# Now register the new UserAdmin...
-#admin.site.register(User, UserAdmin)
-
-# ... and, since we're not using Django's built-in permissions,
-# unregister the Group model from admin.
-#admin.site.unregister(Group)
-'''
 
 admin.site.register(User)
 
