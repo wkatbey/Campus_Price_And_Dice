@@ -29,7 +29,7 @@ nav.navbar {
 }
 
 nav.navbar-light-green {
-    background-color: #0FD88E;
+    background-color: #4EA5ED;
     /*background-color: #7c93b2;*/
 }
 
@@ -41,7 +41,7 @@ li.nav-item a.nav-link {
 }
 
 li.nav-item a.nav-link:hover {
-    background-color: #09BD8D;
+    background-color: #3A99E7;
 }
 
 

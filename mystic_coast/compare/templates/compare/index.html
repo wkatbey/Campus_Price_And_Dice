@@ -9,7 +9,7 @@
 
 {% block body %}
 <div class="container content-top">
-    <div class="text-center">
+    <div class="text-lg-center text-sm-left">
         <h3>Compare Restaurants</h3>
     </div>
     <br>
@@ -25,27 +25,23 @@
     <form action = "{% url 'compare:compare_restaurants' %}" method="POST">
         {% csrf_token %}
         {% autoescape on %}
-        <div class="row content-top">
-            <div class="col-lg-6">
+        <div class="form-group">    
+            <label for = "first_restaurant" class="bmd-label-floating">Restaurant 1</label>
+            <input type="text" 
+            class="form-control form-control-lg mt-2" 
+            id = "first_restaurant" name="first_restaurant">
+        </div>
+        <div class="form-group">
+                <label for = "second_restaurant" class="bmd-label-floating">Restaurant 2</label>
                 <input type="text" 
-                class="form-control blue-input textbox-large round-field-1 float-left" 
-                id = "first_restaurant" name="first_restaurant" placeholder = "Restaurant 1">
-            </div>
-            <div class="col-lg-6">
-                <input type="text" 
-                class="form-control blue-input textbox-large round-field-1 float-right" 
-                id = "second_restaurant" name="second_restaurant" placeholder="Restaurant 2">
-            </div>
+                class="form-control form-control-lg mt-2" 
+                id = "second_restaurant" name="second_restaurant">
         </div>
         {% endautoescape %}
-        <div class="row content-top">
-            <div class="col-lg-12">
-                <div class="text-center">
-                    <input type="submit" 
-                    class="btn-hover color-1" 
-                    value="Compare">
-                </div>
-            </div>
+        <div class="form-group">
+            <input type="submit" 
+            class="btn btn-block btn-outline-primary btn-lg" 
+            value="Compare">
         </div>
     </form>
    
