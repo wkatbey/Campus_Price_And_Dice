@@ -5,13 +5,14 @@ class SaveBusinessHoursForm(forms.ModelForm):
 
     class Meta:
         model = BusinessHours
-        fields = ('from', 'to')
+        fields = ('opening_time', 'closing_time')
 
         widgets = {
-            'from': forms.TimeField(attrs = {
+            
+            'opening_time': forms.TimeInput(attrs = {
                 'class': 'form-control'
             }),
-            'to': forms.TimeField(attrs = {
+            'closing_time': forms.TimeInput(attrs = {
                 'class': 'form-control'
             })
         }
