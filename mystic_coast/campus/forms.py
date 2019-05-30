@@ -8,11 +8,10 @@ class SaveBusinessHoursForm(forms.ModelForm):
         fields = ('opening_time', 'closing_time')
 
         widgets = {
-            '''
-            'from': forms.TimeField(attrs = {
+            'opening_time': forms.TimeInput(attrs = {
                 'class': 'form-control'
             }),
-            'to': forms.TimeField(attrs = {
+            'closing_time': forms.TimeInput(attrs = {
                 'class': 'form-control'
             })'''
         }

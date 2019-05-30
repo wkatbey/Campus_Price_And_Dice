@@ -29,7 +29,7 @@
                <table class="table table-large 
                table-weight-low table-hover table-responsive table-striped">
                     <thead>
-                         <tr class="table-success">
+                         <tr class="table-primary">
                               {% if user.is_maintainer or user.is_staff %}
                                    <th></th>
                                    <th></th>
@@ -46,7 +46,7 @@
                          <tr>
                               {% if restaurant.maintainer == user or user.is_staff %}
                                    <td><a href="{% url 'campus:delete_restaurant' restaurant.id %}">&#10005;</a></td>
-                                   <td><a href="{% url 'campus:edit_restaurant' restaurant.id %}">&#9998;</a></td>
+                                   <td><a href="{% url 'campus:save_restaurant' restaurant.id %}">&#9998;</a></td>
                               {% endif %}
                               {% if user.is_maintainer and restaurant.maintainer != user and not user.is_staff %}
                                    <td></td>

@@ -133,11 +133,16 @@ def add_restaurant(request):
         maintainer = request.user
 
         preliminary_info_form = SaveRestaurantForm(request.POST)
-        preliminary_info_form.save(maintainer)
+        restaurant = preliminary_info_form.save(maintainer)
+
+        return HttpResponseRedirect('campus:restaurant-detail', 
+            kwargs={'restaurant_id': restaurant.id})
 
     else:
         preliminary_info_form = SaveRestaurantForm()
-        
+
+        context['sunday_hours'] = SaveBusinessHoursForm()
+               
         sunday_hours = SaveBusinessHoursForm()
         monday_hours = SaveBusinessHoursForm()
         tuesday_hours = SaveBusinessHoursForm()
@@ -145,6 +150,7 @@ def add_restaurant(request):
         thursday_hours = SaveBusinessHoursForm()
         friday_hours = SaveBusinessHoursForm()
         saturday_hours = SaveBusinessHoursForm()
+
 
         context['preliminary_info_form'] = preliminary_info_form
 

@@ -22,27 +22,26 @@
 }
 
 nav.navbar {
-    padding: 0rem;
-    height: 4rem;
+    padding: .3rem;
     /*background-color: #7c93b2;
     border-style: solid;
 	border-width: 1px;*/
 }
 
 nav.navbar-light-green {
-    background-color: #0FD88E;
+    background-color: #4EA5ED;
     /*background-color: #7c93b2;*/
 }
 
 li.nav-item a.nav-link {
-    display: block;
+    display: inline block;
     height: 4rem;
     padding-top: 1.1rem;
     font-size: 1.2rem;
 }
 
 li.nav-item a.nav-link:hover {
-    background-color: #09BD8D;
+    background-color: #3A99E7;
 }
 
 

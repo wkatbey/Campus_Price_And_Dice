@@ -44,7 +44,7 @@ class Restaurant(models.Model):
     )
 
     description = models.CharField(
-        verbose_name='Tell us abbout your restaurant!',
+        verbose_name='Tell us about your restaurant!',
         max_length=300, 
     )
 
@@ -153,5 +153,9 @@ class BusinessHours(models.Model):
         on_delete=models.CASCADE
     )
 
-    opening_time = models.TimeField()
-    closing_time = models.TimeField()
+    opening_time = models.TimeField(
+        verbose_name="From"
+    )
+    closing_time = models.TimeField(
+        verbose_name="To"
+    )
