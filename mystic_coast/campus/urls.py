@@ -4,7 +4,6 @@ from . import views
 app_name = 'campus'
 urlpatterns = [
     path('', views.index, name='index'),
-    #path('favorite_restaurant_<int:restaurant_id>', views.add_favorite_restaurant, name='add_favorite_restaurant'),
     path('add_restaurant/', views.add_restaurant, name='add_restaurant'),
     path('save_restaurant/', views.save_restaurant, name='save_restaurant'),
     path('restaurant_list/', views.restaurant_list, name='restaurant_list'),

@@ -137,7 +137,7 @@ def add_restaurant(request):
 
     else:
         preliminary_info_form = SaveRestaurantForm()
-       
+        
         sunday_hours = SaveBusinessHoursForm()
         monday_hours = SaveBusinessHoursForm()
         tuesday_hours = SaveBusinessHoursForm()

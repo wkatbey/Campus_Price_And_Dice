@@ -5,16 +5,20 @@ class SaveBusinessHoursForm(forms.ModelForm):
 
     class Meta:
         model = BusinessHours
-        fields = ('from', 'to')
+        fields = ('opening_time', 'closing_time')
 
         widgets = {
+            '''
             'from': forms.TimeField(attrs = {
                 'class': 'form-control'
             }),
             'to': forms.TimeField(attrs = {
                 'class': 'form-control'
-            })
+            })'''
         }
+        
+    def save(self):
+        pass
 
 
 class SaveRestaurantForm(forms.ModelForm):
